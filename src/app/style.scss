@@ -1,0 +1,27 @@
+$theme-colors: (
+  "primary": #489F76,
+  "secondary": #D1E7DD,
+  "info": #FE7D13,
+);
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+    font-family: var(--font-oswald);
+    background-color: $green-800;
+    color: $green-100;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  color: $green-300;
+}
+
+.powered-by {
+  color: $green-300;
+  font-size: 12px;
+  margin-top: 16px;
+}
