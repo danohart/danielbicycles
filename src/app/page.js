@@ -14,34 +14,33 @@ export default function Home() {
 
   function getMiles(meters) {
     const miles = meters * 0.000621371192;
-    return miles.toFixed(2);
+    return miles.toFixed(2) + " Miles";
   }
+
+  function formatNames(name) {
+    const splitName = name.split("_").join(" ");
+
+    return splitName;
+  }
+
+  const info = Object.keys(data).map((name) => (
+    <Col md={6} className='mt-4' key={name}>
+      <Card bg='secondary'>
+        <Card.Body>
+          <Card.Title>{formatNames(name)}</Card.Title>
+          <Card.Text>{getMiles(data[name].toString())}</Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
+  ));
 
   return (
     <Row>
-      <Col md={12} className='mt-4 '>
+      <Col md={12} className='mt-2'>
         <h1>Daniel Rides His Bike</h1>
         <h2>Here are some stats to keep him motivated</h2>
       </Col>
-      <Col md={6} className='mt-4'>
-        <Card bg='secondary'>
-          <Card.Body>
-            <Card.Title>Biggest Ride Distance</Card.Title>
-            <Card.Text>
-              {getMiles(data.biggest_ride_distance)} Miles
-              {/* <Button onClick={getStats}>Test</Button> */}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
-      <Col md={6} className='mt-4'>
-        <Card bg='info'>
-          <Card.Body>
-            <Card.Title>YTD Amount of Rides</Card.Title>
-            <Card.Text>{data.ytd_ride_totals.count}</Card.Text>
-          </Card.Body>
-        </Card>
-      </Col>
+      {info}
       <Row>
         <Col className='powered-by'>Powered by Strava</Col>
       </Row>
